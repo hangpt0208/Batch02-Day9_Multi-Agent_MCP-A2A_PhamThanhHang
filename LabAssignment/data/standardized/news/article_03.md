@@ -1,0 +1,91 @@
+# Sơn Ngọc Minh - hot boy VPop một thời vướng lao lý - Báo VnExpress Giải trí
+
+**Source:** https://vnexpress.net/son-ngoc-minh-hot-boy-vpop-mot-thoi-vuong-lao-ly-5076096.html
+**Crawled:** 2026-06-08T14:34:18.208827
+
+---
+
+[](javascript:;) [ ![VnExpress - Bao tieng Viet nhieu nguoi xem nhat](https://s1.vnecdn.net/vnexpress/restruct/i/v9838/v2_2019/pc/graphics/logo_tagline.svg) ](https://vnexpress.net/ "Báo VnExpress - Báo tiếng Việt nhiều người xem nhất") [ Thứ hai, 8/6/2026 ](https://vnexpress.net/lich-van-nien "Lịch âm")
+[ Mới nhất ](https://vnexpress.net/tin-tuc-24h "Mới nhất")
+Tin theo khu vực 
+  * [Hà Nội](https://vnexpress.net/chu-de/thanh-pho-ha-noi-2056 "Hà Nội")
+  * [TP HCM](https://vnexpress.net/chu-de/thanh-pho-ho-chi-minh-2091 "TP HCM")
+
+
+[International](https://e.vnexpress.net/ "VnExpress International") [ ![](https://s1.vnecdn.net/vnexpress/restruct/c/v3976/v2_2019/pc/images/graphics/menu-myvne.svg) ](https://vnexpress.net/myvne)
+[](javascript:void\(0\);)
+[](javascript:void\(0\);)
+[ ](https://vnexpress.net/son-ngoc-minh-hot-boy-vpop-mot-thoi-vuong-lao-ly-5076096.html#box_comment_vne)
+[ ](javascript:;)
+  * [ ](https://vnexpress.net/ "Trang chủ")
+  * [Mới nhất](https://vnexpress.net/tin-tuc-24h "Mới nhất")
+  * [ VnE-GO ](https://vnexpress.net/vne-go "VnE-GO")
+  * [ Thời sự ](https://vnexpress.net/thoi-su "Thời sự")
+  * [ Thế giới ](https://vnexpress.net/the-gioi "Thế giới")
+  * [ Kinh doanh ](https://vnexpress.net/kinh-doanh "Kinh doanh")
+  * [ Khoa học công nghệ ](https://vnexpress.net/khoa-hoc-cong-nghe "Khoa học công nghệ")
+  * [ Góc nhìn ](https://vnexpress.net/goc-nhin "Góc nhìn")
+  * [ Bất động sản ](https://vnexpress.net/bat-dong-san "Bất động sản")
+  * [ Sức khỏe ](https://vnexpress.net/suc-khoe "Sức khỏe")
+  * [ Thể thao ](https://vnexpress.net/the-thao "Thể thao")
+  * [ Giải trí ](https://vnexpress.net/giai-tri "Giải trí")
+  * [ Pháp luật ](https://vnexpress.net/phap-luat "Pháp luật")
+  * [ Giáo dục ](https://vnexpress.net/giao-duc "Giáo dục")
+  * [ Đời sống ](https://vnexpress.net/doi-song "Đời sống")
+  * [ Xe ](https://vnexpress.net/oto-xe-may "Xe")
+  * [ Du lịch ](https://vnexpress.net/du-lich "Du lịch")
+  * [ Ý kiến ](https://vnexpress.net/y-kien "Ý kiến")
+  * [ Tâm sự ](https://vnexpress.net/tam-su "Tâm sự")
+  * [ Thư giãn ](https://vnexpress.net/thu-gian "Thư giãn")
+  * [Tất cả ](javascript:;)
+
+[ ](javascript:;)
+  * [](javascript:; "Chia sẻ bài viết lên facebook")
+  * [](javascript:; "Chia sẻ bài viết lên twitter")
+  * [](javascript:; "Chia sẻ bài viết lên Linkedin")
+  * [](https://vnexpress.net/son-ngoc-minh-hot-boy-vpop-mot-thoi-vuong-lao-ly-5076096.html#box_comment_vne "Bình luận")
+  * [](javascript:; "In")
+  * [Trở lại Giải trí](https://vnexpress.net/giai-tri)
+
+
+  * [Giải trí](https://vnexpress.net/giai-tri "Giải trí")
+  * [Giới sao](https://vnexpress.net/giai-tri/gioi-sao "Giới sao")
+  * [Trong nước](https://vnexpress.net/giai-tri/gioi-sao/trong-nuoc "Trong nước")
+
+Thứ tư, 20/5/2026, 22:12 (GMT+7)
+#  Sơn Ngọc Minh - hot boy VPop một thời vướng lao lý 
+[ ](https://vnexpress.net/ "VNE")
+##  Sơn Ngọc Minh - hot boy VPop một thời vướng lao lý
+  * [](javascript:; "Chia sẻ bài viết lên Facebook")
+  * [](javascript:; "Chia sẻ bài viết lên X")
+  * [](javascript:; "Chia sẻ bài viết lên Linkedin")
+  * [ ](https://vnexpress.net/son-ngoc-minh-hot-boy-vpop-mot-thoi-vuong-lao-ly-5076096.html#box_comment_vne "Ý kiến")
+  * [](javascript:; "In")
+
+
+Ca sĩ Sơn Ngọc Minh, 36 tuổi, từng hoạt động sôi nổi trong nhóm nhạc V.Music và solo trước khi bị bắt vì liên quan đến ma túy.
+Ngày 20/5, Công an TP HCM cho biết Sơn Ngọc Minh bị Phòng Cảnh sát điều tra tội phạm về ma túy (PC04) [bắt về hành vi](https://vnexpress.net/ca-si-long-nhat-son-ngoc-minh-bi-bat-vi-lien-quan-ma-tuy-5060857.html) Tổ chức sử dụng trái phép chất ma túy. Anh khai nghe theo bạn bè nên sử dụng ma túy đá từ trước Tết Bính Ngọ đến nay.
+Những năm gần đây anh không còn hoạt động tích cực ở làng giải trí, không ra nhạc mà chỉ thỉnh thoảng đi hát tại sự kiện nhỏ. Đầu năm, ca sĩ thường chia sẻ hình ảnh về công việc, đời thường với khán giả trên mạng xã hội. Tháng 12/2024, anh quay video chúc mừng, động viên Hồ Đức Lợi - thành viên nhóm V.Music - tham gia cuộc thi Én Vàng. Khoảng hai tháng trở lại đây, các tài khoản trang cá nhân của anh ngưng hoạt động, bài chia sẻ gần nhất trên Facebook là vào ngày 10/3.
+![Hình ảnh Sơn Ngọc Minh lúc mới nổi tiếng ở showbiz \(trái\) và tại cơ quan điều tra. Ảnh: Facebook Sơn Ngọc Minh/Công an TP HCM.](https://i1-giaitri.vnecdn.net/2026/05/20/Son-Ngoc-Minh-222-1779271664-9358-1779272366.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=68hhH5awihAL24aDWBYcGQ)
+Hình ảnh Sơn Ngọc Minh lúc mới nổi tiếng ở showbiz (trái) và tại cơ quan điều tra. Ảnh:_Facebook Sơn Ngọc Minh/Công an TP HCM_
+Trước khi vướng vào sự việc, Sơn Ngọc Minh là gương mặt được khán giả trẻ biết đến với ngoại hình sáng, từng được gọi là "hot boy Vpop". Anh sinh năm 1990, quê Cần Thơ. Sau khi tốt nghiệp cấp ba, anh đỗ vào Đại học Kiến trúc TP HCM nhưng vì một số lý do nên bỏ giấc mơ giảng đường để mưu sinh. Năm 2009, nhóm nhạc V.Music casting thành viên, anh tham gia và được lựa chọn cùng Lê Thiên Bảo, Hồ Anh, Trần Ngọc Khanh. Khi nhóm hoạt động được một thời gian, Thiên Bảo rời đi và Hồ Đức Lợi thay thế.
+![MV "Xinh tươi Việt Nam" của nhóm V.Music](https://iv1.vnecdn.net/giaitri/images/web/2026/05/20/mv-xinh-tuoi-viet-nam-cua-nhom-v-music-1779265485.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=PdtSK2FQYGXdC5it6WuuCg)
+MV "Xinh tươi Việt Nam" của nhóm V.Music
+Sơn Ngọc Minh xuất hiện đầu tiên trong MV "Xinh tươi Việt Nam" của nhóm V.Music năm 2011. Video: _YouTube T Production_
+V.Music từng được ca sĩ Hồ Ngọc Hà, Nguyễn Hồng Thuận dẫn dắt, giúp đỡ thuở đầu. Họ theo đuổi phong cách pop, ballad và dòng nhạc ca ngợi quê hương đất nước. Nhóm từng ra mắt chín album và ba single, trong đó có nhiều nhạc phẩm nổi bật như _Ngày hạnh phúc, Xinh tươi Việt Nam, Việt Nam gấm hoa._ Năm 2013, họ tổ chức [minishow](https://vnexpress.net/v-music-chay-het-minh-cung-fan-trong-minishow-2432878.html) cùng hơn một nghìn fan trước khi thông báo [tan rã ](https://vnexpress.net/nhom-v-music-tan-ra-2943539.html)vào năm 2014.
+Thời gian sinh hoạt nhóm, anh được các thành viên tin tưởng khả năng ăn nói, thường giao vai trò trả lời câu hỏi của truyền thông lẫn khán giả tại các cuộc giao lưu. Anh còntừng được một số nhà mốt chọn thực hiện bộ [ảnh thời trang](https://vnexpress.net/son-ngoc-minh-an-tuong-voi-do-den-trang-2988857.html) với phong cách dành cho giới trẻ.
+Khi chuyển sang con đường solo, Sơn Ngọc Minh phát hành loạt sản phẩm như _Đi tìm tình yêu,[Biết chết liền](https://vnexpress.net/son-ngoc-minh-tan-dung-phim-biet-chet-lien-de-quay-mv-moi-2833066.html), Hòa nhịp đam mê_ nhưng khônggây nhiều tiếng vang. Ca sĩ trải qua giai đoạn khó khăn tìm định hướng phát triển. Sơn Ngọc Minh từng nói bài toán lúc đó là làm sao thoát khỏi cái bóng lúc còn hoạt động nhóm để tạo dấu ấn riêng. Tại chương trình _Người kết nối_ năm 2017, ca sĩ kể gặp áp lực về cả tài chính lẫn sức khỏe. Tuy nhiên, sau đó anh vượt qua và tìm lại cảm hứng với nghề.
+Ra MV [_Anh muốn yêu em lần nữa_](https://vnexpress.net/son-ngo-c-minh-ru-bo-ve-thu-sinh-trong-am-nhac-3090306.html) năm 2014, anh cho biết dự án đánh dấu bước đi mới về cả phong cách âm nhạc lẫn hình ảnh, muốn rũ bỏ vẻ thư sinh quen thuộc. Đến dự họp báo của đàn em vào thời điểm đó, nhạc sĩ Nguyễn Hồng Thuận nhận xét Sơn Ngọc Minh có sự trưởng thành và tiến bộ. Cuối năm 2015, Sơn Ngọc Minh ra album _[Only You](https://vnexpress.net/son-ngoc-minh-lam-album-ky-niem-mot-nam-solo-3319847.html) - _dự án lớn nhất của anh sau 5 năm bước vào showbiz.
+Anh còn kết hợp Hari Won, Ái Phương qua loạt sản phẩm mang màu sắc tươi vui, khai thác lợi thế vũ đạo. Ngoài âm nhạc, anh theo đuổi công việc diễn xuất, từng góp mặt trong một số phim như _[Vẫn đợi em về](https://vnexpress.net/van-trang-nhay-dancesport-cung-thanh-vien-v-music-1919737.html), Biết chết liền_ (đạo diễn Lê Bảo Trung), _Mười bảy tuổi rưỡi_ (Đỗ Mai Nhất Tuấn).
+![Sơn Ngọc Minh - hot boy VPop một thời trước khi vướng lao lý](https://iv1.vnecdn.net/giaitri/images/web/2026/05/20/son-ngoc-minh-hot-boy-vpop-mot-thoi-truoc-khi-vuong-lao-ly-1779265659.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=QxSNv4Yfb6Oin_ekh0ZH-g)
+Sơn Ngọc Minh - hot boy VPop một thời trước khi vướng lao lý
+Ca sĩ tại hậu trường một sự kiện. Video: _Facebook_ _Sơn Ngọc Minh_
+Tại cơ quan điều tra, Sơn Ngọc Minh bày tỏ sự hối lỗi, nhận sai trước hành vi vi phạm pháp luật. Ca sĩ ý thức sự việc sẽ gây ảnh hưởng đến gia đình và những người xung quanh.
+Gần đây, nhiều ca sĩ gồm Chi Dân, [Miu Lê](https://vnexpress.net/miu-le-xin-loi-khan-gia-5074078.html), [Long Nhật](https://vnexpress.net/su-nghiep-long-nhat-truoc-khi-bi-bat-vi-lien-quan-ma-tuy-5076081.html) vướng lao lý do liên quan đến ma túy khiến khán giả thất vọng. Họ đều có sự nghiệp ổn định với nhiều bản hit, có lượng fan nhất định. Theo các chuyên gia và luật sư, các sự việc trên là lời cảnh tỉnh và bài học dành cho giới nghệ sĩ nói chung.
+**Tân Cao**
+[ Trở lại Giải tríTrở lại Giải trí](https://vnexpress.net/giai-tri)
+[ ](javascript:; "Chia sẻ bài viết lên facebook") [ ](javascript:; "Mail") [ Copy link thành công ](javascript:; "Copy link")
+×
+![](https://vnexpress.net/son-ngoc-minh-hot-boy-vpop-mot-thoi-vuong-lao-ly-5076096.html)
+[](javascript:; "Lên đầu trang")
+×
