@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2A Multi-Agent Protocol Dashboard</title>
+  <!-- Import Outfit and Fira Code fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-glow"></div>
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <div class="brand-text">
+          <h1>A2A Multi-Agent System</h1>
+          <p>Distributed Agent-to-Agent Protocol Visualizer</p>
+        </div>
+      </div>
+      
+      <!-- Live Agent Health Monitor -->
+      <div class="health-monitor">
+        <div class="health-title">Agent Health:</div>
+        <div class="health-badges">
+          <div class="health-badge status-offline" id="health-registry">
+            <span class="dot"></span> Registry (10000)
+          </div>
+          <div class="health-badge status-offline" id="health-customer">
+            <span class="dot"></span> Customer (10100)
+          </div>
+          <div class="health-badge status-offline" id="health-law">
+            <span class="dot"></span> Law (10101)
+          </div>
+          <div class="health-badge status-offline" id="health-tax">
+            <span class="dot"></span> Tax (10102)
+          </div>
+          <div class="health-badge status-offline" id="health-compliance">
+            <span class="dot"></span> Compliance (10103)
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="app-main">
+      
+      <!-- Left Column: Controls & Chat -->
+      <section class="control-chat-section">
+        
+        <!-- App Settings & Mode Selector -->
+        <div class="settings-card glass-panel">
+          <div class="panel-header">
+            <h3>Cấu hình Hệ thống</h3>
+          </div>
+          <div class="settings-grid">
+            <div class="setting-item">
+              <label>Chế độ Demo</label>
+              <div class="mode-toggle-group">
+                <button class="mode-btn active" id="btn-mode-simulated">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Mô phỏng (Offline)
+                </button>
+                <button class="mode-btn" id="btn-mode-live">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  Chạy Thật (Live API)
+                </button>
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label>LLM Engine</label>
+              <div class="model-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12c0-2.4 1-4.6 2.6-6.2"/></svg>
+                <span id="model-name">openai/gpt-oss-120b:free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preset Templates -->
+        <div class="presets-card glass-panel">
+          <div class="panel-header">
+            <h3>Chọn Câu hỏi Mẫu</h3>
+          </div>
+          <div class="presets-list">
+            <button class="preset-btn" data-question="contract_tax">
+              <span class="preset-tag tag-law">Contract</span>
+              <span class="preset-tag tag-tax">Tax</span>
+              <p>Vi phạm hợp đồng và trốn thuế có hậu quả pháp lý gì?</p>
+            </button>
+            <button class="preset-btn" data-question="data_gdpr">
+              <span class="preset-tag tag-compliance">Compliance</span>
+              <span class="preset-tag tag-gdpr">GDPR</span>
+              <p>Rò rỉ dữ liệu khách hàng sẽ bị xử phạt như thế nào theo GDPR?</p>
+            </button>
+            <button class="preset-btn" data-question="contract_only">
+              <span class="preset-tag tag-law">Contract</span>
+              <p>Công ty đơn phương hủy hợp đồng mà không báo trước có vi phạm không?</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Panel -->
+        <div class="chat-card glass-panel">
+          <div class="chat-messages" id="chat-messages-container">
+            <div class="message system">
+              <div class="message-sender">Hệ thống</div>
+              <div class="message-text">
+                Chào mừng bạn đến với <strong>A2A Multi-Agent System Dashboard</strong>.<br>
+                Chọn một câu hỏi mẫu ở trên hoặc tự soạn câu hỏi của bạn. Chế độ <strong>Mô phỏng</strong> sẽ tự động chạy một luồng visual tuyệt đẹp mà không cần API key. Chế độ <strong>Chạy Thật</strong> sẽ kết nối trực tiếp đến các agent đang chạy ở cổng local của bạn.
+              </div>
+            </div>
+          </div>
+          
+          <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Nhập câu hỏi pháp lý của bạn ở đây..." autocomplete="off">
+            <button id="chat-send-btn" class="send-btn">
+              <span>Gửi câu hỏi</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Agent Flow Visualization & Trace Logs -->
+      <section class="visualizer-section">
+        
+        <!-- Network Visualization -->
+        <div class="visualization-card glass-panel">
+          <div class="panel-header">
+            <h3>Mạng lưới Agent Tương tác (A2A Flow)</h3>
+            <span class="status-indicator-label" id="current-state-label">IDLE</span>
+          </div>
+          
+          <div class="visualizer-viewport">
+            <svg id="network-svg" class="network-svg" viewBox="0 0 800 500">
+              <defs>
+                <!-- Glowing Filter -->
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                
+                <!-- Glowing Filter for Lines -->
+                <filter id="line-glow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                
+                <!-- Arrow Marker -->
+                <marker id="arrow" viewBox="0 0 10 10" refX="28" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f5b73"/>
+                </marker>
+                <marker id="arrow-active" viewBox="0 0 10 10" refX="28" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1"/>
+                </marker>
+              </defs>
+
+              <!-- Connection Lines (Static Background) -->
+              <!-- Customer -> Registry -->
+              <path class="connection-line" id="line-cust-reg" d="M 220 220 L 400 130" marker-end="url(#arrow)"/>
+              <!-- Customer -> Law -->
+              <path class="connection-line" id="line-cust-law" d="M 220 250 L 400 250" marker-end="url(#arrow)"/>
+              <!-- Law -> Registry -->
+              <path class="connection-line" id="line-law-reg" d="M 400 230 L 400 150" marker-end="url(#arrow)"/>
+              <!-- Law -> Tax -->
+              <path class="connection-line" id="line-law-tax" d="M 440 230 L 600 130" marker-end="url(#arrow)"/>
+              <!-- Law -> Compliance -->
+              <path class="connection-line" id="line-law-comp" d="M 440 270 L 600 370" marker-end="url(#arrow)"/>
+              
+              <!-- Active Flow Paths (Animated overlay) -->
+              <path class="active-flow-path" id="flow-cust-reg" d="M 220 220 L 400 130"/>
+              <path class="active-flow-path" id="flow-cust-law" d="M 220 250 L 400 250"/>
+              <path class="active-flow-path" id="flow-law-reg" d="M 400 230 L 400 150"/>
+              <path class="active-flow-path" id="flow-law-tax" d="M 440 230 L 600 130"/>
+              <path class="active-flow-path" id="flow-law-comp" d="M 440 270 L 600 370"/>
+              
+              <!-- Return Paths (Animated overlay) -->
+              <path class="active-flow-path flow-reverse" id="flow-reg-cust" d="M 400 130 L 220 220"/>
+              <path class="active-flow-path flow-reverse" id="flow-reg-law" d="M 400 150 L 400 230"/>
+              <path class="active-flow-path flow-reverse" id="flow-tax-law" d="M 600 130 L 440 230"/>
+              <path class="active-flow-path flow-reverse" id="flow-comp-law" d="M 600 370 L 440 270"/>
+              <path class="active-flow-path flow-reverse" id="flow-law-cust" d="M 400 250 L 220 250"/>
+
+              <!-- Nodes -->
+              
+              <!-- 1. Central Registry -->
+              <g class="agent-node" id="node-registry" transform="translate(400, 110)">
+                <circle class="node-pulse" r="45" />
+                <circle class="node-bg" r="35" />
+                <svg class="node-icon" x="-18" y="-18" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                  <line x1="6" y1="6" x2="6.01" y2="6"/>
+                  <line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+                <text class="node-label" y="55">Registry</text>
+                <text class="node-port" y="70">Port 10000</text>
+              </g>
+
+              <!-- 2. Customer Agent -->
+              <g class="agent-node" id="node-customer" transform="translate(180, 250)">
+                <circle class="node-pulse" r="45" />
+                <circle class="node-bg" r="35" />
+                <svg class="node-icon" x="-18" y="-18" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <text class="node-label" y="55">Customer Agent</text>
+                <text class="node-port" y="70">Port 10100</text>
+              </g>
+
+              <!-- 3. Law Agent -->
+              <g class="agent-node" id="node-law" transform="translate(440, 250)">
+                <circle class="node-pulse" r="50" />
+                <circle class="node-bg" r="40" />
+                <svg class="node-icon" x="-20" y="-20" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <text class="node-label" y="60">Law Agent</text>
+                <text class="node-port" y="75">Port 10101</text>
+              </g>
+
+              <!-- 4. Tax Agent -->
+              <g class="agent-node" id="node-tax" transform="translate(640, 110)">
+                <circle class="node-pulse" r="45" />
+                <circle class="node-bg" r="35" />
+                <svg class="node-icon" x="-18" y="-18" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"/>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <text class="node-label" y="55">Tax Agent</text>
+                <text class="node-port" y="70">Port 10102</text>
+              </g>
+
+              <!-- 5. Compliance Agent -->
+              <g class="agent-node" id="node-compliance" transform="translate(640, 390)">
+                <circle class="node-pulse" r="45" />
+                <circle class="node-bg" r="35" />
+                <svg class="node-icon" x="-18" y="-18" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <text class="node-label" y="55">Compliance Agent</text>
+                <text class="node-port" y="70">Port 10103</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Terminal Output / Event Traces -->
+        <div class="terminal-card glass-panel">
+          <div class="panel-header">
+            <h3>A2A Protocol Log Stream</h3>
+            <button class="clear-btn" id="btn-clear-console">Clear Console</button>
+          </div>
+          <div class="terminal-console" id="terminal-console-container">
+            <div class="console-line system">[SYSTEM] Visualizer initialized. Ready.</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

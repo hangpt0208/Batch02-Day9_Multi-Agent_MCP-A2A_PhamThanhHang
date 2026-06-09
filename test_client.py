@@ -25,7 +25,13 @@ async def main() -> None:
     print(f"Question: {QUESTION}")
     print("-" * 60)
 
-    async with httpx.AsyncClient(timeout=300.0) as http_client:
+    timeout_config = httpx.Timeout(
+        connect=30.0,
+        read=600.0,   # tăng lên 10 phút vì chuỗi LLM calls rất chậm
+        write=30.0,
+        pool=30.0,
+    )
+    async with httpx.AsyncClient(timeout=timeout_config) as http_client:
         # Resolve agent card
         card_url = f"{CUSTOMER_AGENT_URL}/.well-known/agent.json"
         try:

@@ -65,8 +65,24 @@ uv run python stages/stage_1_direct_llm/main.py
 Mở file `stages/stage_1_direct_llm/main.py` và trả lời:
 
 1. LLM được khởi tạo như thế nào? (Tìm hàm `get_llm()`)
+    - llm = get_llm() #LLm được khởi tạo ở đây
+    - Trong hàm get_llm(), nó sẽ khởi tạo mộ đối tượng ChatOpenAI bằng phương thức ChatOpenAI() trong thư viện langchain_openai
+    
 2. Message được gửi đến LLM có cấu trúc gì?
+    - Messages được gửi đến LLM có dạng danh sách (list) gồm các đối tượng SystemMessage và HumanMessage
+    - Cấu trúc cụ thể là: 
+    ```bash
+        messages = [
+            SystemMessage(content="You are a legal expert..."),
+            HumanMessage(content=QUESTION),
+        ]
+    ```
+    => Toàn bộ mảng messages sẽ là câu lệnh đầu vào cho LLM
 3. Tại sao cần có `SystemMessage` và `HumanMessage`?
+    - SystemMessage: Dùng để cung cấp context và instruction cho LLM. Những thiết lập này mang tính bắt buộc và ảnh hưởng lên toàn bộ cách AI trả lời
+    - HumanMessage: Dùng để cung cấp câu hỏi, dữ liệu hoặc mệnh lệnh của người dùng
+    <br>
+Sự tách biệt này không chỉ giúp LLM hiểu ngữ cảnh chính xác hơn mà còn giúp phòng chống các cuộc tấn công dạng "Prompt Injection"
 
 **Bài Tập 1.1:** Thay đổi câu hỏi
 
@@ -105,8 +121,25 @@ uv run python stages/stage_2_rag_tools/main.py
 Mở `stages/stage_2_rag_tools/main.py` và tìm:
 
 1. Hàm `@tool` decorator được dùng ở đâu?
+<br>
+ Được dùng trước các hàm `search_legal_database` và `calculate_damages`. Decorator này giúp LangChain biến các hàm Python thông thường thành các "công cụ" (tools) chứa thông tin mô tả chi tiết (tên hàm, tham số, documentations) để gửi cho LLM, nhờ đó LLM hiểu chức năng của tool và biết khi nào nên gọi nó.
 2. `LEGAL_KNOWLEDGE` được cấu trúc như thế nào?
+<br>
+ Nó là một list các dictionary đóng vai trò như một cơ sở dữ liệu nhỏ gọn trong bộ nhớ. Mỗi dictionary chứa:
+<br>
+
+- id: Định danh duy nhất cho entry.
+- keywords: Danh sách từ khóa để tool `search_legal_database` sử dụng nhằm tính điểm độ liên quan (overlap) với truy vấn.
+- text: Nội dung thực tế chứa kiến thức luật chi tiết để cung cấp context cho LLM.
+
 3. LLM được bind với tools ra sao? (Tìm `.bind_tools()`)
+<br>
+ LLM được liên kết (bind) với danh sách các tools thông qua dòng lệnh:
+<br>
+`llm_with_tools = llm.bind_tools(TOOLS)`
+<br>
+Phương thức `.bind_tools()` có nhiệm vụ đọc cấu trúc của các hàm Python (bao gồm tên hàm, tham số đầu vào, và docstring) trong mảng TOOLS, sau đó chuyển đổi chúng thành định dạng chuẩn (JSON Schema). Khi gửi request lên API, schema này sẽ được gửi kèm theo, giúp LLM nhận biết được rằng nó đang có sẵn các công cụ này và có quyền "yêu cầu" chạy chúng nếu cần thiết để trả lời câu hỏi của người dùng.
+<br>
 
 **Bài Tập 2.1:** Thêm knowledge base entry
 
@@ -355,6 +388,50 @@ Mở 5 terminal tabs và xem logs của từng service:
 **Bài Tập 5.1:** Trace request flow
 
 Trong logs, tìm `trace_id` và theo dõi request đi qua các agents. Vẽ sequence diagram.
+
+```mermaid
+sequenceDiagram
+    participant C as test_client.py
+    participant CA as Customer Agent<br/>(10100)
+    participant R as Registry<br/>(10000)
+    participant LA as Law Agent<br/>(10101)
+    participant TA as Tax Agent<br/>(10102)
+    participant CLA as Compliance Agent<br/>(10103)
+    participant LLM as OpenRouter API
+
+    C->>CA: POST / (question, trace_id)
+    CA->>LLM: Classify question
+    LLM-->>CA: OK
+    CA->>R: GET /discover/legal_question
+    R-->>CA: http://localhost:10101
+    CA->>LA: POST / (depth=1)
+    LA->>LLM: analyze_law
+    LLM-->>LA: OK
+    LA->>LLM: check_routing
+    LLM-->>LA: {needs_tax: true, needs_compliance: true}
+    par Parallel delegation
+        LA->>R: GET /discover/tax_question
+        R-->>LA: http://localhost:10102
+        LA->>TA: POST / (depth=2)
+        TA->>LLM: tax analysis
+        LLM-->>TA: OK
+        TA-->>LA: tax result (12111 chars)
+    and
+        LA->>R: GET /discover/compliance_question
+        R-->>LA: http://localhost:10103
+        LA->>CLA: POST / (depth=2)
+        CLA->>LLM: compliance analysis
+        LLM-->>CLA: OK
+        CLA-->>LA: compliance result (14198 chars)
+    end
+    LA->>LLM: aggregate all results
+    LLM-->>LA: final answer
+    LA-->>CA: law result
+    CA->>LLM: format for user
+    LLM-->>CA: OK
+    CA-->>C: final response
+
+```
 
 **Bài Tập 5.2:** Test dynamic discovery
 

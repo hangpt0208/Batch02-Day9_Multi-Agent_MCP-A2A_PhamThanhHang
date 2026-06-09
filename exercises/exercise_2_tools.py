@@ -28,6 +28,15 @@ LEGAL_KNOWLEDGE = [
     },
     # TODO: Thêm entry về luật lao động Việt Nam
     # Gợi ý: id="labor_law", keywords=["lao động", "sa thải", ...], text="..."
+    {
+        "id": "vietnam_labor_law",
+        "keywords": ["lao động", "sa thải", "việc làm", "hợp đồng lao động", "labor"],
+        "text": (
+            "Theo Bộ luật Lao động Việt Nam 2019, thời hiệu yêu cầu tòa án giải quyết tranh chấp lao động "
+            "cá nhân là 01 năm kể từ ngày phát hiện ra hành vi mà mỗi bên tranh chấp cho rằng quyền và "
+            "lợi ích hợp pháp của mình bị vi phạm. Đối với trường hợp bị xử lý kỷ luật sa thải thì thời hiệu là 01 năm."
+        ),
+    }
 ]
 
 
@@ -42,12 +51,28 @@ def search_legal_knowledge(query: str) -> str:
 
 
 # TODO: Tạo tool check_statute_of_limitations
-# Gợi ý: nhận case_type (str), trả về thời hiệu khởi kiện
-# @tool
-# def check_statute_of_limitations(case_type: str) -> str:
-#     """Kiểm tra thời hiệu khởi kiện."""
-#     # YOUR CODE HERE
-#     pass
+@tool
+def check_statute_of_limitations(case_type: str) -> str:
+    """Kiểm tra thời hiệu khởi kiện dựa trên loại vụ việc (case_type) như dân sự, hình sự, lao động, hợp đồng."""
+    case_type_lower = case_type.lower()
+    if "hợp đồng" in case_type_lower or "contract" in case_type_lower:
+        return "Thời hiệu khởi kiện để yêu cầu Tòa án giải quyết tranh chấp hợp đồng là 03 năm, kể từ ngày người có quyền yêu cầu biết hoặc phải biết quyền và lợi ích hợp pháp của mình bị xâm phạm (Theo Điều 429 Bộ luật Dân sự 2015)."
+    elif "lao động" in case_type_lower or "labor" in case_type_lower:
+        return "Thời hiệu giải quyết tranh chấp lao động cá nhân là 01 năm kể từ ngày phát hiện hành vi vi phạm (Theo Bộ luật Lao động 2019)."
+    elif "dân sự" in case_type_lower:
+        return "Thời hiệu khởi kiện vụ án dân sự thông thường là 03 năm kể từ ngày biết quyền lợi bị xâm phạm (Điều 184 BLDS 2015)."
+    else:
+        return f"Không tìm thấy quy định cụ thể cho loại vụ việc '{case_type}'. Thông thường thời hiệu dân sự là 3 năm."
+
+
+def safe_print(text: str) -> None:
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        import sys
+        encoding = sys.stdout.encoding or 'utf-8'
+        safe_text = text.encode(encoding, errors='replace').decode(encoding)
+        print(safe_text)
 
 
 async def main():
@@ -55,7 +80,7 @@ async def main():
     llm = get_llm()
     
     # TODO: Thêm tool mới vào danh sách
-    tools = [search_legal_knowledge]  # Thêm check_statute_of_limitations vào đây
+    tools = [search_legal_knowledge, check_statute_of_limitations]  # Thêm check_statute_of_limitations vào đây
     llm_with_tools = llm.bind_tools(tools)
     
     question = "Thời hiệu khởi kiện vụ vi phạm hợp đồng là bao lâu?"
@@ -65,7 +90,7 @@ async def main():
         HumanMessage(content=question),
     ]
     
-    print(f"Câu hỏi: {question}\n")
+    safe_print(f"Câu hỏi: {question}\n")
     
     # First LLM call - decide which tools to use
     response = await llm_with_tools.ainvoke(messages)
@@ -74,21 +99,22 @@ async def main():
     # Execute tools if requested
     if response.tool_calls:
         for tool_call in response.tool_calls:
-            print(f"🔧 Gọi tool: {tool_call['name']}")
+            safe_print(f"🔧 Gọi tool: {tool_call['name']}")
             tool_result = None
             
             if tool_call["name"] == "search_legal_knowledge":
                 tool_result = search_legal_knowledge.invoke(tool_call["args"])
-            # TODO: Thêm xử lý cho check_statute_of_limitations
+            elif tool_call["name"] == "check_statute_of_limitations":
+                tool_result = check_statute_of_limitations.invoke(tool_call["args"])
             
             if tool_result:
                 messages.append(ToolMessage(content=tool_result, tool_call_id=tool_call["id"]))
         
         # Second LLM call - synthesize final answer
         final_response = await llm_with_tools.ainvoke(messages)
-        print(f"\n✅ Kết quả:\n{final_response.content}")
+        safe_print(f"\n✅ Kết quả:\n{final_response.content}")
     else:
-        print(f"\n✅ Kết quả:\n{response.content}")
+        safe_print(f"\n✅ Kết quả:\n{response.content}")
 
 
 if __name__ == "__main__":

@@ -30,6 +30,7 @@ class State(TypedDict):
     compliance_analysis: Annotated[str, _last_wins]
     privacy_analysis: Annotated[str, _last_wins]  # TODO: Thêm field mới
     final_response: str
+    
 
 
 def law_agent(state: State) -> dict:
@@ -51,8 +52,8 @@ def check_routing(state: State) -> list[Send]:
     tasks = []
     
     # TODO: Thêm logic routing cho privacy_agent
-    # Gợi ý: kiểm tra keywords như "data", "privacy", "gdpr", "dữ liệu"
-    
+    if any(kw in question_lower for kw in ["data", "privacy", "gdpr", "dữ liệu", "rò rỉ", "bảo mật"]):
+        tasks.append(Send("privacy_agent", state))
     if any(kw in question_lower for kw in ["tax", "irs", "thuế"]):
         tasks.append(Send("tax_agent", state))
     
@@ -95,10 +96,16 @@ Tập trung: SEC, SOX, FCPA, AML, regulatory violations."""
 # TODO: Implement privacy_agent
 def privacy_agent(state: State) -> dict:
     """Agent chuyên về bảo vệ dữ liệu cá nhân và GDPR."""
-    # YOUR CODE HERE
-    # Gợi ý: tương tự tax_agent và compliance_agent
-    # Tập trung: GDPR, data protection, privacy rights, data breach
-    pass
+    llm = get_llm()
+    prompt = f"""Bạn là chuyên gia bảo mật dữ liệu và quyền riêng tư (Privacy Expert). Phân tích khía cạnh bảo mật dữ liệu trong câu hỏi:
+
+Câu hỏi: {state['question']}
+Phân tích pháp lý chung: {state.get('law_analysis', 'N/A')}
+
+Tập trung: GDPR, Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân (Việt Nam), data protection, privacy rights, data breach, mức phạt vi phạm dữ liệu."""
+    
+    response = llm.invoke([HumanMessage(content=prompt)])
+    return {"privacy_analysis": response.content}
 
 
 def aggregate_results(state: State) -> dict:
@@ -113,7 +120,8 @@ def aggregate_results(state: State) -> dict:
     if state.get("compliance_analysis"):
         sections.append(f"✅ PHÂN TÍCH TUÂN THỦ:\n{state['compliance_analysis']}")
     # TODO: Thêm privacy_analysis vào sections
-    
+    if state.get("privacy_analysis"):
+        sections.append(f"🔒 PHÂN TÍCH BẢO MẬT DỮ LIỆU & QUYỀN RIÊNG TƯ:\n{state['privacy_analysis']}")
     combined = "\n\n".join(sections)
     
     prompt = f"""Tổng hợp các phân tích sau thành một báo cáo pháp lý hoàn chỉnh:
@@ -138,6 +146,7 @@ def build_graph() -> StateGraph:
     graph.add_node("tax_agent", tax_agent)
     graph.add_node("compliance_agent", compliance_agent)
     # TODO: Thêm privacy_agent node
+    graph.add_node("privacy_agent", privacy_agent)
     graph.add_node("aggregate_results", aggregate_results)
     
     # Define edges
@@ -147,6 +156,7 @@ def build_graph() -> StateGraph:
     graph.add_edge("tax_agent", "aggregate_results")
     graph.add_edge("compliance_agent", "aggregate_results")
     # TODO: Thêm edge từ privacy_agent đến aggregate_results
+    graph.add_edge("privacy_agent", "aggregate_results")
     graph.add_edge("aggregate_results", END)
     
     return graph.compile()
